@@ -26,7 +26,7 @@ const BLOG_POSTS = [
     }
 
 ]
-function HomePage() {
+function HomePage(props) {
 
     return (
         <Fragment>
@@ -38,7 +38,7 @@ function HomePage() {
             </Head>
             <h1>Blog Page</h1>
             {
-                BLOG_POSTS.map((blog) => (
+                props.blogPosts.map((blog) => (
 
             <div key={blog.id} className="flex flex-col">
                 <BlogItem
@@ -49,5 +49,18 @@ function HomePage() {
             }
         </Fragment>
     )
+}
+
+export async function getStaticProps() {
+    //Sends request to a backend api
+    //read the fs...
+    //securely connect to a DB
+
+    return {
+        props: {
+            blogPosts: BLOG_POSTS
+        },
+        revalidate: 3600, // rebuild the component evry hours (3600  ms)
+    }
 }
 export default HomePage;
