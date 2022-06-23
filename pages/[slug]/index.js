@@ -1,5 +1,9 @@
+import { useRouter } from "next/router"
+
 function BlogDetails(){
-    return <h1>The blog details Page </h1>
+    const router = useRouter()
+
+    return (<h1>The blog details Page </h1>)
 }
 
 export default BlogDetails
